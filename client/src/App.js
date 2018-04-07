@@ -9,7 +9,7 @@ class App extends Component {
 
     this.state = {
       endpoint: END_POINT,
-      color: 'white',
+      // color: 'white',
     }
   }
 

@@ -3,6 +3,8 @@ import socketIOClient from 'socket.io-client'
 
 import Content from './chat/Content';
 import Action from './chat/Action';
+import Error from './chat/Error';
+import { splitMessage, isMessageError } from './services';
 import { MESSAGE_SOCKET, END_POINT } from 'constants.js';
 import Styles from './Chat.scss';
 
@@ -12,8 +14,8 @@ class Chat extends Component {
   constructor() {
     super();
     this.state = {
-      content: '',
       message: '',
+      content: '',
     };
   }
 
@@ -22,13 +24,14 @@ class Chat extends Component {
   }
 
   handleSendMessage = () => {
-    socket.emit(MESSAGE_SOCKET, this.state.message);
+    const message = splitMessage(this.state.message);
+    socket.emit(MESSAGE_SOCKET, message);
     this.setState({ message: '' });
   };
 
   handleChangeMessage = (event) => {
     const message = event.target.value;
-    this.setState({ message });
+    this.setState({ message: message });
   };
 
   catchMessageFromServer = () => {
@@ -39,7 +42,8 @@ class Chat extends Component {
 
   render() {
     const { message, content } = this.state;
-    const isSendDisabled = !message || message.length === 0;
+    const isError = isMessageError(message);
+    const isSendDisabled = !message || message.length === 0 || isError;
 
     return (
       <div className={Styles.wrapper}>
@@ -50,6 +54,7 @@ class Chat extends Component {
           messageValue={message}
           isDisabledSendMessage={isSendDisabled}
         />
+        <Error isOpen={isError} />
       </div>
     )
   }

@@ -17,7 +17,7 @@ class Content extends Component {
 
     return (
       <div className={classNames(Styles.wrapper, className)}>
-        {isValid && content.map(message => <Message message={message}/>)}
+        {isValid && content.map(messages => <Message messages={messages}/>)}
       </div>
     );
   }

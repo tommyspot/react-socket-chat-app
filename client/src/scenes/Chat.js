@@ -15,7 +15,7 @@ class Chat extends Component {
     super();
     this.state = {
       message: '',
-      content: '',
+      content: [],
     };
   }
 

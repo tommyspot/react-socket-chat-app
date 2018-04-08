@@ -1,6 +1,6 @@
 import { MAX_LENGTH, EMPTY_STRING } from '../constants';
 
-function getChunk(message, index) {
+const getChunk = (message, index) => {
   const firstMessage = message.substring(0, index);
   const secondMessage = message.substring(index + 1, message.length);
 
@@ -11,7 +11,7 @@ function getChunk(message, index) {
   return null;
 };
 
-export function splitMessage(rawMessage) {
+export const splitMessage = (rawMessage) => {
   if (typeof rawMessage !== 'string') return null;
 
   const message = rawMessage.trim();
@@ -23,12 +23,12 @@ export function splitMessage(rawMessage) {
   if (char === EMPTY_STRING) {
     return getChunk(message, MAX_LENGTH - 1);
   }
-  // Split right a last word
+  // Split right a last char of word
   const nextChar = message.charAt(MAX_LENGTH);
   if (nextChar === EMPTY_STRING) {
     return getChunk(message, MAX_LENGTH);
   }
-  // Split into a word
+  // Split right into a word
   const subMessage =  message.substring(0, MAX_LENGTH);
   const spaceIndex = subMessage.lastIndexOf(EMPTY_STRING);
   if (spaceIndex !== -1 ) {
@@ -37,7 +37,7 @@ export function splitMessage(rawMessage) {
   return null;
 };
 
-export function isMessageError(message) {
+export const isMessageError = (message) => {
   const splitedMessage = splitMessage(message);
   return splitedMessage === null;
-}
+};

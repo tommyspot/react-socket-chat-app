@@ -1,4 +1,4 @@
-# REACT SOCKET CHAT APPLICATION
+# React Socket Chat Application
 
 ### Main page:
 ![Main page](https://i.imgur.com/7hL0r2B.png)
@@ -9,26 +9,10 @@
 * CSS: SASS, CSS Module
 
 ### Skeleton project:
-- mainApp
-  -- client
-     --- config
-     --- script
-     -- src
-        --- __tests__
-        --- components
-        --- scenes
-        --- App.js
-        --- index.js
-        --- registerServiceWorker.js
-        --- ...
-  -- server.js
-  -- README.md
-  -- ...
-
-![Skeleton project](https://i.imgur.com/lakCZUa.png)
+<img src="https://i.imgur.com/lakCZUa.png" width="300">
 
 ### Some Features:
-* Chat feature base on Express server by using socket-io library.
+* Chat feature bases on Express server by using socket-io library.
 * Implement splitMessage (include unit test) when user sends a message.
 * Designed mockup is same Twitter Messenger.
 ![Chat](https://i.imgur.com/GZLwTUS.png)
@@ -36,7 +20,7 @@
 * Handle error when user inputs invalid message.
 ![Error](https://i.imgur.com/ZmTtgGB.png)
 
-### Installation:
+### Installation: (Assumption that main folder name is mainApp)
 * Go to mainApp: "yarn install"
 * Go to mainApp/client: "yarn install"
 
